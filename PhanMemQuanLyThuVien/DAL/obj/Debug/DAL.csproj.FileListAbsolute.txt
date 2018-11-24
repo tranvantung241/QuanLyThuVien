@@ -1,0 +1,7 @@
+D:\Code\NET\DOAN\PhanMemQuanLyThuVien\DAL\bin\Debug\DAL.dll.config
+D:\Code\NET\DOAN\PhanMemQuanLyThuVien\DAL\bin\Debug\DAL.dll
+D:\Code\NET\DOAN\PhanMemQuanLyThuVien\DAL\bin\Debug\DAL.pdb
+D:\Code\NET\DOAN\PhanMemQuanLyThuVien\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\Code\NET\DOAN\PhanMemQuanLyThuVien\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\Code\NET\DOAN\PhanMemQuanLyThuVien\DAL\obj\Debug\DAL.dll
+D:\Code\NET\DOAN\PhanMemQuanLyThuVien\DAL\obj\Debug\DAL.pdb

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuanLiThuVien" Class="ThuVienDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=TRANTUNG\TUNG;Initial Catalog=QuanLiThuVien;Integrated Security=True" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="QuanLiThuVienConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.DANGNHAP" Member="DANGNHAPs">
+    <Type Name="DANGNHAP">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SACH" Member="SACHes">
+    <Type Name="SACH">
+      <Column Name="masach" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tensach" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="loaisach" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="trigia" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="tinhtrangsach" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hinhanh" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="statu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="LOAISACH_SACH" Member="LOAISACH1" ThisKey="loaisach" OtherKey="maloaisach" Type="LOAISACH" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LOAISACH" Member="LOAISACHes">
+    <Type Name="LOAISACH">
+      <Column Name="maloaisach" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenloaisach" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="LOAISACH_SACH" Member="SACHes" ThisKey="maloaisach" OtherKey="loaisach" Type="SACH" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NGUOIDOC" Member="NGUOIDOCs">
+    <Type Name="NGUOIDOC">
+      <Column Name="madocgia" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tendocgia" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ngaysinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="gioitinh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="diachi" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="sdt" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.HienThiSach" Method="HienThiSach">
+    <ElementType Name="HienThiSachResult">
+      <Column Name="masach" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tensach" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="tenloaisach" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="trigia" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="tinhtrangsach" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hinhanh" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.XoaSach" Method="XoaSach">
+    <Parameter Name="masach" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ThemSach" Method="ThemSach">
+    <Parameter Name="tensach" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="loaisach" Type="System.Int32" DbType="Int" />
+    <Parameter Name="trigia" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="tinhtrang" Type="System.Int32" DbType="Int" />
+    <Parameter Name="hinhanh" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CapNhatSact" Method="CapNhatSact">
+    <Parameter Name="masach" Type="System.Int32" DbType="Int" />
+    <Parameter Name="tensach" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="loaisach" Type="System.Int32" DbType="Int" />
+    <Parameter Name="trigia" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="tinhtrang" Type="System.Int32" DbType="Int" />
+    <Parameter Name="hinhanh" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.LayToanBoLoaiSach" Method="LayToanBoLoaiSach">
+    <ElementType Name="LayToanBoLoaiSachResult">
+      <Column Name="maloaisach" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tenloaisach" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ThemLoaiSach" Method="ThemLoaiSach">
+    <Parameter Name="tenloaisach" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.XoaLoaiSach" Method="XoaLoaiSach">
+    <Parameter Name="maloaisac" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CapNhatLoaiSach" Method="CapNhatLoaiSach">
+    <Parameter Name="maloaisach" Type="System.Int32" DbType="Int" />
+    <Parameter Name="tenloaisach" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ThemNguoiDoc" Method="ThemNguoiDoc">
+    <Parameter Name="tendocgia" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="ngaysinh" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="gioitinh" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="diachi" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="sdt" Type="System.String" DbType="NVarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
