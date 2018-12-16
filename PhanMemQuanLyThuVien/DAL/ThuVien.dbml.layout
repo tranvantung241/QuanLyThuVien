@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ThuVien">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.875" name="ThuVien">
   <DataContextMoniker Name="/ThuVienDataContext" />
   <nestedChildShapes>
     <classShape Id="a2726536-b9d3-43f1-a66e-7bf09ce8b7fe" absoluteBounds="4.375, 0.875, 2, 1.5785953776041666">
@@ -20,17 +20,82 @@
         <elementListCompartment Id="18662969-5924-4adf-98df-2b6aec57675a" absoluteBounds="1.8900000000000001, 3.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.875 : 3.78449625651042); (4.875 : 3.78449625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.875 : 3.78449625651042); (4.875 : 3.78449625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ThuVienDataContext/LOAISACH/LOAISACH_SACH" />
       <nodes>
         <classShapeMoniker Id="df4d911b-9648-48ee-a92c-df1a62144e91" />
         <classShapeMoniker Id="afa6038b-889a-478b-ad17-4d17bf55fa51" />
       </nodes>
     </associationConnector>
-    <classShape Id="6ee7048d-d68b-4088-970f-e792e3036607" absoluteBounds="2.25, 5.25, 2, 1.9631982421875">
+    <classShape Id="6ee7048d-d68b-4088-970f-e792e3036607" absoluteBounds="2.875, 6.125, 2, 1.9631982421875">
       <DataClassMoniker Name="/ThuVienDataContext/NGUOIDOC" />
       <nestedChildShapes>
-        <elementListCompartment Id="51b3b0b5-c2ab-4ae7-aeae-f5a5c19ef770" absoluteBounds="2.265, 5.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="51b3b0b5-c2ab-4ae7-aeae-f5a5c19ef770" absoluteBounds="2.89, 6.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ade83bb2-64a5-4a7a-bf78-4a99c93e4307" absoluteBounds="7.875, 5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/ThuVienDataContext/PHIEUMUON" />
+      <nestedChildShapes>
+        <elementListCompartment Id="100ecc2b-3cb8-4685-8417-84934f91c8a7" absoluteBounds="7.8900000000000006, 5.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e01f52d5-d315-49f9-97ef-2ae232868b3e" absoluteBounds="7.875, 2, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/ThuVienDataContext/NHANVIEN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2f141b22-3ea5-424c-8a09-6de02385ea10" absoluteBounds="7.89, 2.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.875 : 4.34780110677083); (8.875 : 5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ThuVienDataContext/NHANVIEN/NHANVIEN_PHIEUMUON" />
+      <nodes>
+        <classShapeMoniker Id="e01f52d5-d315-49f9-97ef-2ae232868b3e" />
+        <classShapeMoniker Id="ade83bb2-64a5-4a7a-bf78-4a99c93e4307" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.375 : 2.22679768880208); (7.875 : 2.22679768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ThuVienDataContext/DANGNHAP/DANGNHAP_NHANVIEN" />
+      <nodes>
+        <classShapeMoniker Id="a2726536-b9d3-43f1-a66e-7bf09ce8b7fe" />
+        <classShapeMoniker Id="e01f52d5-d315-49f9-97ef-2ae232868b3e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="26203323-c5a6-4de5-bc92-c87281271c76" absoluteBounds="5, 7.375, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/ThuVienDataContext/CHITIETPHIEUMUON" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ea1cbc81-dea5-4f16-96fd-613fa55b05df" absoluteBounds="5.015, 7.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.875 : 6.2444482421875); (6.96875 : 6.2444482421875); (6.96875 : 7.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ThuVienDataContext/PHIEUMUON/PHIEUMUON_CHITIETPHIEUMUON" />
+      <nodes>
+        <classShapeMoniker Id="ade83bb2-64a5-4a7a-bf78-4a99c93e4307" />
+        <classShapeMoniker Id="26203323-c5a6-4de5-bc92-c87281271c76" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.9375 : 5.65549967447917); (5.9375 : 7.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ThuVienDataContext/SACH/SACH_CHITIETPHIEUMUON" />
+      <nodes>
+        <classShapeMoniker Id="afa6038b-889a-478b-ad17-4d17bf55fa51" />
+        <classShapeMoniker Id="26203323-c5a6-4de5-bc92-c87281271c76" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7c293e87-355e-41b5-a8cf-f4efc1aeb43d" absoluteBounds="1.75, 0.625, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/ThuVienDataContext/PHIEUTRA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6b6468f7-f30c-4efd-b46a-af4c9fdc4eda" absoluteBounds="1.7650000000000001, 1.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.875 : 2.66429768880208); (1.78125 : 2.66429768880208); (1.78125 : 2.39589680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ThuVienDataContext/NHANVIEN/NHANVIEN_PHIEUTRA" />
+      <nodes>
+        <classShapeMoniker Id="e01f52d5-d315-49f9-97ef-2ae232868b3e" />
+        <classShapeMoniker Id="7c293e87-355e-41b5-a8cf-f4efc1aeb43d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="5dec8ce0-f6c1-45f4-8b58-884fc4d9fd85" absoluteBounds="0.5, 4.25, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/ThuVienDataContext/HoaDon" />
+      <nestedChildShapes>
+        <elementListCompartment Id="392cd0c7-a639-42d8-b934-8db3205faa5a" absoluteBounds="0.515, 4.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

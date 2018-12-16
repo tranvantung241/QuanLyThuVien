@@ -80,12 +80,24 @@ namespace PhanMemQuanLyThuVien
             {
                 XtraMessageBox.Show("Giá chưa hợp lệ", "Thông Báo");
             }
-            else { 
+            else {
                 //ảnh
                 byte[] images = null;
-                FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
-                BinaryReader brs = new BinaryReader(stream);
-                images = brs.ReadBytes((int)stream.Length);
+                if (imgLocation == "")
+                {
+                    images = null;
+                    //FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+                    //BinaryReader brs = new BinaryReader(stream);
+                    //images = brs.ReadBytes((int)stream.Length);
+                }
+                else
+                {
+                    images = null;
+                    FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+                    BinaryReader brs = new BinaryReader(stream);
+                    images = brs.ReadBytes((int)stream.Length);
+                }
+
 
                 tensach = txtTenSach.Text;
                 loaisach = int.Parse(cboLoaiSach.SelectedValue.ToString());
@@ -99,11 +111,11 @@ namespace PhanMemQuanLyThuVien
                 String kt = sach.ThemSach(tensach, loaisach, money, tinhtrang, images);
                 if (kt.Equals("OK"))
                 {
-                    MessageBox.Show("Thêm Sách Thành Công", "Thông Báo");
+                    XtraMessageBox.Show("Thêm Sách Thành Công", "Thông Báo");
                     XoaTextFile();
                 }
                 else
-                    MessageBox.Show("Thêm Sách Thất Bại", "Thông Báo");
+                    XtraMessageBox.Show("Thêm Sách Thất Bại", "Thông Báo");
             }
 
         }

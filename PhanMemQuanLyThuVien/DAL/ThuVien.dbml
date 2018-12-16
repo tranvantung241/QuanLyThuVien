@@ -6,6 +6,7 @@
       <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="password" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DANGNHAP_NHANVIEN" Member="NHANVIENs" ThisKey="id" OtherKey="taikhoan" Type="NHANVIEN" />
     </Type>
   </Table>
   <Table Name="dbo.SACH" Member="SACHes">
@@ -17,6 +18,7 @@
       <Column Name="tinhtrangsach" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="hinhanh" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="statu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SACH_CHITIETPHIEUMUON" Member="CHITIETPHIEUMUONs" ThisKey="masach" OtherKey="masach" Type="CHITIETPHIEUMUON" />
       <Association Name="LOAISACH_SACH" Member="LOAISACH1" ThisKey="loaisach" OtherKey="maloaisach" Type="LOAISACH" IsForeignKey="true" />
     </Type>
   </Table>
@@ -37,16 +39,62 @@
       <Column Name="sdt" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Function Name="dbo.HienThiSach" Method="HienThiSach">
-    <ElementType Name="HienThiSachResult">
-      <Column Name="masach" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="tensach" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="tenloaisach" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="trigia" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="tinhtrangsach" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="hinhanh" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
-    </ElementType>
-  </Function>
+  <Table Name="dbo.PHIEUMUON" Member="PHIEUMUONs">
+    <Type Name="PHIEUMUON">
+      <Column Name="maphieumuon" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="madocgia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="manv" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngaymuon" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ngaytradukien" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="PHIEUMUON_CHITIETPHIEUMUON" Member="CHITIETPHIEUMUONs" ThisKey="maphieumuon" OtherKey="maphieumuon" Type="CHITIETPHIEUMUON" />
+      <Association Name="NHANVIEN_PHIEUMUON" Member="NHANVIEN" ThisKey="manv" OtherKey="manv" Type="NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NHANVIEN" Member="NHANVIENs">
+    <Type Name="NHANVIEN">
+      <Column Name="manv" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tennhanvien" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="gioitinh" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ngaysinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="diachi" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="sdt" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="chucvu" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="taikhoan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="NHANVIEN_PHIEUMUON" Member="PHIEUMUONs" ThisKey="manv" OtherKey="manv" Type="PHIEUMUON" />
+      <Association Name="NHANVIEN_PHIEUTRA" Member="PHIEUTRAs" ThisKey="manv" OtherKey="manv" Type="PHIEUTRA" />
+      <Association Name="DANGNHAP_NHANVIEN" Member="DANGNHAP" ThisKey="taikhoan" OtherKey="id" Type="DANGNHAP" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CHITIETPHIEUMUON" Member="CHITIETPHIEUMUONs">
+    <Type Name="CHITIETPHIEUMUON">
+      <Column Name="maphieumuon" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="masach" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="PHIEUMUON_CHITIETPHIEUMUON" Member="PHIEUMUON" ThisKey="maphieumuon" OtherKey="maphieumuon" Type="PHIEUMUON" IsForeignKey="true" />
+      <Association Name="SACH_CHITIETPHIEUMUON" Member="SACH" ThisKey="masach" OtherKey="masach" Type="SACH" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUTRA" Member="PHIEUTRAs">
+    <Type Name="PHIEUTRA">
+      <Column Name="maphieutra" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="madocgia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="manv" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="masach" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngaylapphieutra" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="NHANVIEN_PHIEUTRA" Member="NHANVIEN" ThisKey="manv" OtherKey="manv" Type="NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HoaDon" Member="HoaDons">
+    <Type Name="HoaDon">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="madocgia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="masach" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="soluong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sotien" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="lydo" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ngayhd" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.XoaSach" Method="XoaSach">
     <Parameter Name="masach" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
@@ -93,6 +141,185 @@
     <Parameter Name="gioitinh" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="diachi" Type="System.String" DbType="NVarChar(250)" />
     <Parameter Name="sdt" Type="System.String" DbType="NVarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.KiemTraDocGia" Method="KiemTraDocGia">
+    <Parameter Name="madocgia" Type="System.Int32" DbType="Int" />
+    <ElementType Name="KiemTraDocGiaResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.XoaDocGia" Method="XoaDocGia">
+    <Parameter Name="madocgia" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CapNhatDocGia" Method="CapNhatDocGia">
+    <Parameter Name="madocgia" Type="System.Int32" DbType="Int" />
+    <Parameter Name="tendocgia" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="gioitinh" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="diachi" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="sdt" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="ngaysinh" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.LayToanBoNhanVien" Method="LayToanBoNhanVien">
+    <ElementType Name="LayToanBoNhanVienResult">
+      <Column Name="manv" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tennhanvien" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="gioitinh" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ngaysinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="diachi" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="sdt" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="chucvu" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.XoaNhanVien" Method="XoaNhanVien">
+    <Parameter Name="manhanvien" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ThemNhanVien" Method="ThemNhanVien">
+    <Parameter Name="tennhanvien" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="gioitinh" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="ngaysinh" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="diachi" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="sdt" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="chucvu" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="taikhoan" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CapNhatNhanVien" Method="CapNhatNhanVien">
+    <Parameter Name="manv" Type="System.Int32" DbType="Int" />
+    <Parameter Name="tennhanvien" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="gioitinh" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="ngaysinh" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="diachi" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="sdt" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="chucvu" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="taikhoan" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.LayNVLogin" Method="LayNVLogin">
+    <Parameter Name="username" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="LayNVLoginResult">
+      <Column Name="manv" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tennhanvien" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.HienThiSach" Method="HienThiSach">
+    <ElementType Name="HienThiSachResult">
+      <Column Name="masach" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tensach" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="tenloaisach" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="trigia" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="tinhtrangsach" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hinhanh" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPhieuMuon" Method="GetPhieuMuon">
+    <ElementType Name="GetPhieuMuonResult">
+      <Column Name="maphieumuon" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tendocgia" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="tennhanvien" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ngaymuon" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ngaytradukien" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.HienDocGiaPhieuMuon" Method="HienDocGiaPhieuMuon">
+    <ElementType Name="HienDocGiaPhieuMuonResult">
+      <Column Name="madocgia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tendocgia" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.HienThiSachMuon" Method="HienThiSachMuon">
+    <ElementType Name="HienThiSachMuonResult">
+      <Column Name="masach" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tensach" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.LapPhieuTra" Method="LapPhieuTra">
+    <Parameter Name="madocgia" Type="System.Int32" DbType="Int" />
+    <Parameter Name="manv" Type="System.Int32" DbType="Int" />
+    <Parameter Name="masach" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ngaytra" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.LaySachTheoDocGiaMuon" Method="LaySachTheoDocGiaMuon">
+    <Parameter Name="madocgia" Type="System.Int32" DbType="Int" />
+    <ElementType Name="LaySachTheoDocGiaMuonResult">
+      <Column Name="masach" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tensach" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPhieuTra" Method="GetPhieuTra">
+    <ElementType Name="GetPhieuTraResult">
+      <Column Name="maphieutra" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tendocgia" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="tennhanvien" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="tensach" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ngaylapphieutra" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.KiemTraNgayTra" Method="KiemTraNgayTra">
+    <Parameter Name="madocgia" Type="System.Int32" DbType="Int" />
+    <Parameter Name="masach" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ngaytra" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ThemHoaDon" Method="ThemHoaDon">
+    <Parameter Name="ten" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="madocgia" Type="System.Int32" DbType="Int" />
+    <Parameter Name="masach" Type="System.Int32" DbType="Int" />
+    <Parameter Name="soluong" Type="System.Int32" DbType="Int" />
+    <Parameter Name="sotien" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="lydo" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="date" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ThemPhieuMuon" Method="ThemPhieuMuon">
+    <Parameter Name="maphieumuon" Type="System.Int32" DbType="Int" />
+    <Parameter Name="manv" Type="System.Int32" DbType="Int" />
+    <Parameter Name="madocgia" Type="System.Int32" DbType="Int" />
+    <Parameter Name="masach" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ngaymuon" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="ngaytra" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ThemTaiKhoan" Method="ThemTaiKhoan">
+    <Parameter Name="username" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="pass" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="status" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.KiemTraTonTaiDangNhap" Method="KiemTraTonTaiDangNhap">
+    <Parameter Name="username" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CapNhatTaiKhoan" Method="CapNhatTaiKhoan">
+    <Parameter Name="username" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="pass" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="status" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetStatusLogin" Method="GetStatusLogin">
+    <Parameter Name="username" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.HienThiNhanVienPQ" Method="HienThiNhanVienPQ">
+    <ElementType Name="HienThiNhanVienPQResult">
+      <Column Name="manv" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tennhanvien" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTaiKhoanUser" Method="GetTaiKhoanUser">
+    <Parameter Name="manv" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetTaiKhoanUserResult">
+      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.PhanQuyen" Method="PhanQuyen">
+    <Parameter Name="username" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="staus" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

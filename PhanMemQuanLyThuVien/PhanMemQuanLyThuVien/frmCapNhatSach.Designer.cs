@@ -33,7 +33,6 @@
             this.pictureBox1Update = new System.Windows.Forms.PictureBox();
             this.cboTinhTrangUpdate = new System.Windows.Forms.ComboBox();
             this.cboLoaiSachUpdate = new System.Windows.Forms.ComboBox();
-            this.btnCancleUpdateSach = new DevExpress.XtraEditors.SimpleButton();
             this.btnCapNhatSach = new DevExpress.XtraEditors.SimpleButton();
             this.btnChonAnhUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.txtGiaUpdate = new DevExpress.XtraEditors.TextEdit();
@@ -54,7 +53,7 @@
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.pictureBox1Update);
-            this.groupControl1.Location = new System.Drawing.Point(459, 71);
+            this.groupControl1.Location = new System.Drawing.Point(379, 65);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(5);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(190, 239);
@@ -77,7 +76,7 @@
             this.cboTinhTrangUpdate.FormattingEnabled = true;
             this.cboTinhTrangUpdate.Items.AddRange(new object[] {
             "Mới"});
-            this.cboTinhTrangUpdate.Location = new System.Drawing.Point(160, 229);
+            this.cboTinhTrangUpdate.Location = new System.Drawing.Point(102, 223);
             this.cboTinhTrangUpdate.Margin = new System.Windows.Forms.Padding(5);
             this.cboTinhTrangUpdate.Name = "cboTinhTrangUpdate";
             this.cboTinhTrangUpdate.Size = new System.Drawing.Size(233, 28);
@@ -87,36 +86,22 @@
             // 
             this.cboLoaiSachUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboLoaiSachUpdate.FormattingEnabled = true;
-            this.cboLoaiSachUpdate.Location = new System.Drawing.Point(160, 127);
+            this.cboLoaiSachUpdate.Location = new System.Drawing.Point(102, 121);
             this.cboLoaiSachUpdate.Margin = new System.Windows.Forms.Padding(5);
             this.cboLoaiSachUpdate.Name = "cboLoaiSachUpdate";
             this.cboLoaiSachUpdate.Size = new System.Drawing.Size(233, 28);
             this.cboLoaiSachUpdate.TabIndex = 38;
             // 
-            // btnCancleUpdateSach
-            // 
-            this.btnCancleUpdateSach.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancleUpdateSach.Appearance.Options.UseFont = true;
-            this.btnCancleUpdateSach.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCancleThemSach.ImageOptions.Image")));
-            this.btnCancleUpdateSach.Location = new System.Drawing.Point(397, 343);
-            this.btnCancleUpdateSach.Margin = new System.Windows.Forms.Padding(5);
-            this.btnCancleUpdateSach.Name = "btnCancleUpdateSach";
-            this.btnCancleUpdateSach.Size = new System.Drawing.Size(105, 38);
-            this.btnCancleUpdateSach.TabIndex = 36;
-            this.btnCancleUpdateSach.Text = "Cancle";
-            this.btnCancleUpdateSach.Click += new System.EventHandler(this.btnCancleUpdateSach_Click);
-            // 
             // btnCapNhatSach
             // 
-            this.btnCapNhatSach.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapNhatSach.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnThemSach.Appearance.Image")));
+            this.btnCapNhatSach.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapNhatSach.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnCapNhatSach.Appearance.Image")));
             this.btnCapNhatSach.Appearance.Options.UseFont = true;
             this.btnCapNhatSach.Appearance.Options.UseImage = true;
-            this.btnCapNhatSach.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemSach.ImageOptions.Image")));
-            this.btnCapNhatSach.Location = new System.Drawing.Point(202, 343);
+            this.btnCapNhatSach.Location = new System.Drawing.Point(237, 343);
             this.btnCapNhatSach.Margin = new System.Windows.Forms.Padding(5);
             this.btnCapNhatSach.Name = "btnCapNhatSach";
-            this.btnCapNhatSach.Size = new System.Drawing.Size(134, 38);
+            this.btnCapNhatSach.Size = new System.Drawing.Size(109, 26);
             this.btnCapNhatSach.TabIndex = 35;
             this.btnCapNhatSach.Text = "Cập Nhật";
             this.btnCapNhatSach.Click += new System.EventHandler(this.btnCapNhatSach_Click);
@@ -125,7 +110,7 @@
             // 
             this.btnChonAnhUpdate.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChonAnhUpdate.Appearance.Options.UseFont = true;
-            this.btnChonAnhUpdate.Location = new System.Drawing.Point(160, 277);
+            this.btnChonAnhUpdate.Location = new System.Drawing.Point(102, 271);
             this.btnChonAnhUpdate.Margin = new System.Windows.Forms.Padding(5);
             this.btnChonAnhUpdate.Name = "btnChonAnhUpdate";
             this.btnChonAnhUpdate.Size = new System.Drawing.Size(233, 33);
@@ -135,7 +120,7 @@
             // 
             // txtGiaUpdate
             // 
-            this.txtGiaUpdate.Location = new System.Drawing.Point(160, 175);
+            this.txtGiaUpdate.Location = new System.Drawing.Point(102, 169);
             this.txtGiaUpdate.Margin = new System.Windows.Forms.Padding(5);
             this.txtGiaUpdate.Name = "txtGiaUpdate";
             this.txtGiaUpdate.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -145,7 +130,7 @@
             // 
             // txtTenSachUpdate
             // 
-            this.txtTenSachUpdate.Location = new System.Drawing.Point(160, 71);
+            this.txtTenSachUpdate.Location = new System.Drawing.Point(102, 65);
             this.txtTenSachUpdate.Margin = new System.Windows.Forms.Padding(5);
             this.txtTenSachUpdate.Name = "txtTenSachUpdate";
             this.txtTenSachUpdate.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -157,7 +142,7 @@
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(38, 286);
+            this.labelControl6.Location = new System.Drawing.Point(14, 284);
             this.labelControl6.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(68, 20);
@@ -168,7 +153,7 @@
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(38, 127);
+            this.labelControl5.Location = new System.Drawing.Point(14, 125);
             this.labelControl5.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(72, 20);
@@ -179,7 +164,7 @@
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(38, 178);
+            this.labelControl4.Location = new System.Drawing.Point(14, 176);
             this.labelControl4.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(29, 20);
@@ -190,7 +175,7 @@
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(38, 229);
+            this.labelControl3.Location = new System.Drawing.Point(14, 227);
             this.labelControl3.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(75, 20);
@@ -201,7 +186,7 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(38, 74);
+            this.labelControl2.Location = new System.Drawing.Point(14, 72);
             this.labelControl2.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(69, 20);
@@ -210,12 +195,12 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(251, 25);
+            this.labelControl1.Location = new System.Drawing.Point(193, 19);
             this.labelControl1.Margin = new System.Windows.Forms.Padding(5);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(153, 24);
+            this.labelControl1.Size = new System.Drawing.Size(166, 24);
             this.labelControl1.TabIndex = 25;
             this.labelControl1.Text = "CẬP NHẬT SÁCH";
             // 
@@ -224,11 +209,10 @@
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 423);
+            this.ClientSize = new System.Drawing.Size(583, 392);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.cboTinhTrangUpdate);
             this.Controls.Add(this.cboLoaiSachUpdate);
-            this.Controls.Add(this.btnCancleUpdateSach);
             this.Controls.Add(this.btnCapNhatSach);
             this.Controls.Add(this.btnChonAnhUpdate);
             this.Controls.Add(this.txtGiaUpdate);
@@ -241,8 +225,9 @@
             this.Controls.Add(this.labelControl1);
             this.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MinimizeBox = false;
             this.Name = "frmCapNhatSach";
-            this.Text = "frmCapNhatSach";
+            this.Text = "CẬP NHẬT SÁCH";
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1Update)).EndInit();
@@ -259,7 +244,6 @@
         private System.Windows.Forms.PictureBox pictureBox1Update;
         private System.Windows.Forms.ComboBox cboTinhTrangUpdate;
         private System.Windows.Forms.ComboBox cboLoaiSachUpdate;
-        private DevExpress.XtraEditors.SimpleButton btnCancleUpdateSach;
         private DevExpress.XtraEditors.SimpleButton btnCapNhatSach;
         private DevExpress.XtraEditors.SimpleButton btnChonAnhUpdate;
         private DevExpress.XtraEditors.TextEdit txtGiaUpdate;

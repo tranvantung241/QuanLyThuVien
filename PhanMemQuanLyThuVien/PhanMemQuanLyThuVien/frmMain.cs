@@ -8,28 +8,69 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BUS;
+using DevExpress.XtraReports.UI;
 
 namespace PhanMemQuanLyThuVien
 {
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public static string idLogin;
+        public static string TaiKhoan = "";
+        int status = 1;
         public frmMain()
         {
 
             InitializeComponent();
-            disEnableMenuLogin(true, idLogin);
+            disEnableMenuLogin(true, status);
             navigationFrame1.SelectedPage = pageMain;
+            this.IsMdiContainer = true;
         }
 
-        public void disEnableMenuLogin(bool e, String id_login)
+        public void disEnableMenuLogin(bool e, int id_login)
         {
-            btnLogin.Enabled = e;
-            btnLogout.Enabled = !e;
-            btnKhoiPhucDuLieu.Enabled = !e;
-            btnChangePass.Enabled = !e;
-            btnPhanQuyen.Enabled = !e;
-            btnSaoDuLieu.Enabled = !e;
+           switch (id_login)
+            {
+                case 1: // admin
+                    btnLogin.Enabled = e;
+                    btnLogout.Enabled = !e; 
+                    btnChangePass.Enabled = !e;
+                    btnPhanQuyen.Enabled = !e; 
+                    btnSach.Enabled = !e;
+                    btnDanhSachSach.Enabled = !e;
+                    btnListTypeSach.Enabled = !e;
+                    btnQLDocGia.Enabled = !e;
+                    btnQLVN.Enabled = !e;
+                    btnMuonSach.Enabled = !e;
+                    btnBaoCao.Enabled = !e;
+                    break;
+                case 2: // nhân viên
+                    btnLogin.Enabled = e;
+                    btnLogout.Enabled = !e; 
+                    btnChangePass.Enabled = !e;
+                    btnPhanQuyen.Enabled = !e; 
+                    btnSach.Enabled = !e;
+                    btnDanhSachSach.Enabled = !e;
+                    btnListTypeSach.Enabled = !e;
+                    btnQLDocGia.Enabled = !e;
+                    btnMuonSach.Enabled = !e;
+                    btnTraSach.Enabled = !e;
+                    break;
+                case 3: // giám đốc
+                    btnLogin.Enabled = e;
+                    btnLogout.Enabled = !e;
+                    btnChangePass.Enabled = !e;
+                    btnPhanQuyen.Enabled = !e;
+                    btnSach.Enabled = !e;
+                    btnDanhSachSach.Enabled = !e;
+                    btnListTypeSach.Enabled = !e;
+                    btnQLDocGia.Enabled = !e;
+                    btnQLVN.Enabled = !e;
+                    btnMuonSach.Enabled = !e;
+                    btnBaoCao.Enabled = !e;
+                    btnPhanQuyen.Enabled = e;
+                    break;
+            }
+            
         }
 
         public void skins()
@@ -43,6 +84,7 @@ namespace PhanMemQuanLyThuVien
             if ((XtraMessageBox.Show("Bạn có chắc chắn muốn thoát ra?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
             {
                 frmMain frm = new frmMain();
+                frmMain.TaiKhoan = "";
                 this.Hide();
                 frm.ShowDialog();
             }
@@ -59,7 +101,14 @@ namespace PhanMemQuanLyThuVien
             pageMain.Controls.Add(new USMain());
             pageListSach.Controls.Add(new USListSach());
             pageLoaiSach.Controls.Add(new USLoaiSach());
-            pageDocGia.Controls.Add(new USDocGia()); 
+            pageDocGia.Controls.Add(new USDocGia());
+            pageNhanVien.Controls.Add(new USNhanVien());
+            pagePhieuMuon.Controls.Add(new USPhieuMuon());
+            pagePhieuTra.Controls.Add(new USPhieuTra());
+            pageBaoCao.Controls.Add(new USBaoCao());
+            pageThongKe.Controls.Add(new USThongKe());
+            pagePhanQuyen.Controls.Add(new USPhanQuyen());
+            pageTienPhat.Controls.Add(new USTienPhat());
         }
 
         private void Form1_Click(object sender, EventArgs e)
@@ -73,13 +122,14 @@ namespace PhanMemQuanLyThuVien
         }
 
         private void btnLogin_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
+        { 
             navigationFrame1.SelectedPage = pageMain;
             frmLogin login = null;
             Check_Login:
             if (login == null || login.IsDisposed)
             {
                 login = new frmLogin();
+
             }
             if (login.ShowDialog() == DialogResult.OK)
             {
@@ -99,11 +149,11 @@ namespace PhanMemQuanLyThuVien
                 string matkhau = login.txtPass.Text;
 
                 bool kt = bus.KiemTraDangNhap(taikhoan, matkhau);
-
+                status = bus.GetStatusLogin(taikhoan);
                 if (kt == true)
-                {
-                    XtraMessageBox.Show("Đăng Nhập Thành Công", "Thông Báo");
-                    disEnableMenuLogin(false, idLogin);
+                { 
+                    disEnableMenuLogin(false, status);
+                    TaiKhoan = taikhoan;
                 }
                 else
                 {
@@ -117,14 +167,15 @@ namespace PhanMemQuanLyThuVien
 
         private void btnChangePass_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            frmRegister frmRegister = new frmRegister();
+            frmRegister.StartPosition = FormStartPosition.Manual;
+            frmRegister.Left = 500;
+            frmRegister.Top = 200;
+            frmRegister.ShowDialog();
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //frmSach sach = new frmSach();
-            //sach.MdiParent = this;
-            //sach.Show();
+        { 
             navigationFrame1.SelectedPage = pageQuanLySach;
         }
 
@@ -141,6 +192,43 @@ namespace PhanMemQuanLyThuVien
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             navigationFrame1.SelectedPage = pageDocGia;
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            navigationFrame1.SelectedPage = pageNhanVien;
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            navigationFrame1.SelectedPage = pagePhieuMuon;
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            navigationFrame1.SelectedPage = pagePhieuTra;
+        }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            navigationFrame1.SelectedPage = pageBaoCao;
+
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            navigationFrame1.SelectedPage = pageThongKe;
+        }
+
+        private void btnPhanQuyen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            navigationFrame1.SelectedPage = pagePhanQuyen;
+        }
+
+        private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            navigationFrame1.SelectedPage = pageTienPhat;
         }
     }
 }

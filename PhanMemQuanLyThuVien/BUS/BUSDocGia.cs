@@ -30,6 +30,43 @@ namespace BUS
                 return e.Message;
             }
         }
+         
 
+        public bool XoaDocGia(int madocgia)
+        {
+            try
+            {
+                thuvien.XoaDocGia(madocgia);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return false;
+        }
+
+        public bool CapNhatDocGia(int madocgia, string tendocgia, string gioitinh, string diachi
+            , string sdt, DateTime ngaysinh)
+        {
+            try
+            {
+                thuvien.CapNhatDocGia(madocgia, tendocgia, gioitinh, diachi, sdt, ngaysinh);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return false;
+        }
+
+
+        //hiển thị danh sách độc giả có trong phiếu mượn
+        public List<HienDocGiaPhieuMuonResult> HienDocGiaPhieuMuon ()
+        {
+            List<HienDocGiaPhieuMuonResult> docgiaphieumuon = thuvien.HienDocGiaPhieuMuon().ToList();
+            return docgiaphieumuon;
+        }
     }
 }

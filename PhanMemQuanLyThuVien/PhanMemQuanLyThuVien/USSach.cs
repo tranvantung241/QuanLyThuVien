@@ -11,6 +11,7 @@ using DAL;
 using BUS;
 using DevExpress.XtraExport; 
 using DevExpress.XtraEditors;
+using System.Windows;
 
 namespace PhanMemQuanLyThuVien
 {
@@ -37,8 +38,13 @@ namespace PhanMemQuanLyThuVien
 
         private void accordionControlElement2_Click(object sender, EventArgs e)
         {
+            frmMain frmMain = new frmMain();
             frmThemSach frmsach = new frmThemSach();
+            frmsach.StartPosition = FormStartPosition.Manual;
+            frmsach.Left = 500;
+            frmsach.Top = 200; 
             frmsach.ShowDialog();
+            HienThiDanhSachSach();
         }
 
         private void accordionControlElement4_Click(object sender, EventArgs e)
@@ -103,9 +109,14 @@ namespace PhanMemQuanLyThuVien
                     MaSach = int.Parse(masach.ToString());
 
                 }
-                frmCapNhatSach frmCapNhat = new frmCapNhatSach(); 
+                frmCapNhatSach frmCapNhat = new frmCapNhatSach();
+                frmCapNhat.StartPosition = FormStartPosition.Manual;
+                frmCapNhat.Left = 500;
+                frmCapNhat.Top = 200;
                 frmCapNhat.ShowDialog();
-            }   
+                HienThiDanhSachSach();
+
+            }
         }
     }
 }

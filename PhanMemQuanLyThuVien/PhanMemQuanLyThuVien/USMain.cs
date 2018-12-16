@@ -15,6 +15,7 @@ namespace PhanMemQuanLyThuVien
         public USMain()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
         }
     }
 }

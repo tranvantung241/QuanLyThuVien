@@ -44,7 +44,11 @@
   <ItemGroup>
     <Compile Include="BUSDangNhap.cs" />
     <Compile Include="BUSDocGia.cs" />
+    <Compile Include="BUSHoaDon.cs" />
     <Compile Include="BUSLoaiSach.cs" />
+    <Compile Include="BUSNhanVien.cs" />
+    <Compile Include="BUSPhieuMuon.cs" />
+    <Compile Include="BUSPhieuTra.cs" />
     <Compile Include="BUSSach.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

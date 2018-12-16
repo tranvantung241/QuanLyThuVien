@@ -84,12 +84,22 @@ namespace PhanMemQuanLyThuVien
                 XtraMessageBox.Show("Giá chưa hợp lệ", "Thông Báo");
             }
             else
-            {
-                //ảnh
+            {//ảnh
                 byte[] images = null;
-                FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
-                BinaryReader brs = new BinaryReader(stream);
-                images = brs.ReadBytes((int)stream.Length);
+                if (imgLocation == "")
+                {
+                    images = null;
+                    //FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+                    //BinaryReader brs = new BinaryReader(stream);
+                    //images = brs.ReadBytes((int)stream.Length);
+                }
+                else
+                {
+                    images = null;
+                    FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+                    BinaryReader brs = new BinaryReader(stream);
+                    images = brs.ReadBytes((int)stream.Length);
+                }
 
                 tensach = txtTenSachUpdate.Text;
                 loaisach = int.Parse(cboLoaiSachUpdate.SelectedValue.ToString());

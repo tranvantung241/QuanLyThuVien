@@ -71,6 +71,21 @@ namespace BUS
                 return e.Message;
             }
         }
+
+       //Hiển thị danh sách sách mượn
+       public List<HienThiSachMuonResult> HienThiSachMuon()
+       {
+            List<HienThiSachMuonResult> sachmuon = thuvien.HienThiSachMuon().ToList();
+            return sachmuon;
+       }
+
+        //hiển thị sách mượn theo độc giả
+
+        public List<LaySachTheoDocGiaMuonResult> LaySachTheoDocGiaMuon (int madocgia)
+        {
+            List<LaySachTheoDocGiaMuonResult> sachmuon = thuvien.LaySachTheoDocGiaMuon(madocgia).ToList();
+            return sachmuon;
+        }
     }
 
 

@@ -32,7 +32,11 @@ namespace PhanMemQuanLyThuVien
         private void accordionControlElement2_Click(object sender, EventArgs e)
         {
             frmThemLoaiSach frmThemLoaiSach = new frmThemLoaiSach();
+            frmThemLoaiSach.StartPosition = FormStartPosition.Manual;
+            frmThemLoaiSach.Left = 500;
+            frmThemLoaiSach.Top = 200;
             frmThemLoaiSach.ShowDialog();
+            HienThiDanLoaiSach();
         }
 
         private void accordionControlElement5_Click(object sender, EventArgs e)
@@ -90,7 +94,11 @@ namespace PhanMemQuanLyThuVien
                     TenLoaiSach = tenloaisach.ToString(); 
                 }
                 frmCapNhatLoaiSach frmCapNhatLoaiSach = new frmCapNhatLoaiSach();
+                frmCapNhatLoaiSach.StartPosition = FormStartPosition.Manual;
+                frmCapNhatLoaiSach.Left = 500;
+                frmCapNhatLoaiSach.Top = 200;
                 frmCapNhatLoaiSach.ShowDialog();
+                HienThiDanLoaiSach();
             }
         }
     }

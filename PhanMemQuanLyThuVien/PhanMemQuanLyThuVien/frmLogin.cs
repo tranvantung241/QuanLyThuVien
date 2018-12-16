@@ -15,5 +15,21 @@ namespace PhanMemQuanLyThuVien
         {
             txtPass.Properties.PasswordChar = chkHienPass.Checked ? '\0' : '\u25CF';
         }
+
+        private void hyperlinkLabelControl1_Click(object sender, EventArgs e)
+        {
+            frmRegister register = null;
+            if (register == null || register.IsDisposed)
+            {
+                register = new frmRegister();
+            }
+
+            register.ShowDialog();
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            this.AcceptButton = btnLoginOK;
+        }
     }
 }
